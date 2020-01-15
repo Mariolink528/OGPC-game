@@ -32,24 +32,8 @@ func _physics_process(delta):
 	else:
 		motion.y = 0 
 		friction = true
-		
-	if is_on_floor():
-		if Input.is_action_just_pressed("ui_up"):
-			motion.y = min(motion.y + ACCELERATION, MAX_SPEED)
-		if friction == true:
-			motion.x = lerp(motion.x, 0, 0.2)
 	
 	if friction == true:
 		motion.x = lerp(motion.x, 0, 0.05)
+		motion.y = lerp(motion.y, 0, 0.05)
 	motion = move_and_slide(motion, UP)
-
-func _on_Player_body_entered(body):
-	if Input.is_action_pressed("ui_right"):
-		move_local_x( -9)
-	if Input.is_action_pressed("ui_left"):
-		move_local_x( 9)
-	if Input.is_action_pressed("ui_down"):
-		move_local_y( -9)
-	if Input.is_action_pressed("ui_up"):
-		move_local_y( 9)
-	print("Works");
