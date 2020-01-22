@@ -1,23 +1,16 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Planter.gd" type="Script" id=1]
 
-[sub_resource type="SpriteFrames" id=1]
-animations = [ {
-"frames": [ ExtResource( 1 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
-
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 32.4198, 31.5165 )
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 32 )
 
 [node name="Planter" type="StaticBody2D"]
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-modulate = Color( 0, 1, 0.0625, 1 )
-frames = SubResource( 1 )
+script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+[connection signal="mouse_entered" from="." to="." method="_on_Planter_mouse_entered"]
