@@ -65,9 +65,16 @@ script = ExtResource( 4 )
 margin_right = 144.0
 margin_bottom = 160.0
 items = [ "Exit", null, false, "Plant1", null, false, "Plant2", null, false, "Plant3", null, false, "Plant4", null, false ]
+select_mode = 1
+allow_reselect = true
 auto_height = true
 same_column_width = true
 script = ExtResource( 5 )
 [connection signal="mouse_entered" from="Planter" to="PlantMenu/Button" method="_on_Planter_mouse_entered"]
 [connection signal="mouse_exited" from="Planter" to="PlantMenu/Button" method="_on_Planter_mouse_exited"]
+[connection signal="pressed" from="PlantMenu/Button" to="PlantMenu/Button" method="_on_Button_pressed"]
 [connection signal="pressed" from="PlantMenu/Button" to="PlantMenu/ItemList" method="_on_Button_pressed"]
+[connection signal="item_activated" from="PlantMenu/ItemList" to="PlantMenu/Button" method="_on_ItemList_item_activated"]
+[connection signal="item_activated" from="PlantMenu/ItemList" to="PlantMenu/ItemList" method="_on_ItemList_item_activated"]
+[connection signal="item_selected" from="PlantMenu/ItemList" to="PlantMenu/Button" method="_on_ItemList_item_selected"]
+[connection signal="item_selected" from="PlantMenu/ItemList" to="PlantMenu/ItemList" method="_on_ItemList_item_selected"]

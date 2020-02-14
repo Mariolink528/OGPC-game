@@ -16,3 +16,8 @@ func _ready():
 func _on_Button_pressed():
 	show()
 	print("YES")
+
+
+
+func _on_ItemList_item_activated(index):
+	hide()
