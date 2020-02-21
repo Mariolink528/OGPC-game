@@ -4,7 +4,7 @@
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://Planter.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Button.gd" type="Script" id=4]
-[ext_resource path="res://ItemList.gd" type="Script" id=5]
+[ext_resource path="res://VBoxContainer.gd" type="Script" id=5]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
@@ -56,25 +56,43 @@ margin_bottom = 40.0
 [node name="Button" type="Button" parent="PlantMenu"]
 margin_left = -22.0
 margin_top = -10.0
-margin_right = 12.0
+margin_right = 22.0
 margin_bottom = 10.0
 text = "Plant"
 script = ExtResource( 4 )
 
-[node name="ItemList" type="ItemList" parent="PlantMenu"]
-margin_right = 144.0
-margin_bottom = 160.0
-items = [ "Exit", null, false, "Plant1", null, false, "Plant2", null, false, "Plant3", null, false, "Plant4", null, false ]
-select_mode = 1
-allow_reselect = true
-auto_height = true
-same_column_width = true
+[node name="VBoxContainer" type="VBoxContainer" parent="PlantMenu"]
+margin_right = 40.0
+margin_bottom = 40.0
 script = ExtResource( 5 )
+
+[node name="Exit" type="Button" parent="PlantMenu/VBoxContainer"]
+margin_right = 40.0
+margin_bottom = 20.0
+text = "Exit"
+
+[node name="Button2" type="Button" parent="PlantMenu/VBoxContainer"]
+margin_top = 24.0
+margin_right = 40.0
+margin_bottom = 44.0
+
+[node name="Button3" type="Button" parent="PlantMenu/VBoxContainer"]
+margin_top = 48.0
+margin_right = 40.0
+margin_bottom = 68.0
+
+[node name="Button4" type="Button" parent="PlantMenu/VBoxContainer"]
+margin_top = 72.0
+margin_right = 40.0
+margin_bottom = 92.0
+
+[node name="Button5" type="Button" parent="PlantMenu/VBoxContainer"]
+margin_top = 96.0
+margin_right = 40.0
+margin_bottom = 116.0
 [connection signal="mouse_entered" from="Planter" to="PlantMenu/Button" method="_on_Planter_mouse_entered"]
 [connection signal="mouse_exited" from="Planter" to="PlantMenu/Button" method="_on_Planter_mouse_exited"]
 [connection signal="pressed" from="PlantMenu/Button" to="PlantMenu/Button" method="_on_Button_pressed"]
-[connection signal="pressed" from="PlantMenu/Button" to="PlantMenu/ItemList" method="_on_Button_pressed"]
-[connection signal="item_activated" from="PlantMenu/ItemList" to="PlantMenu/Button" method="_on_ItemList_item_activated"]
-[connection signal="item_activated" from="PlantMenu/ItemList" to="PlantMenu/ItemList" method="_on_ItemList_item_activated"]
-[connection signal="item_selected" from="PlantMenu/ItemList" to="PlantMenu/Button" method="_on_ItemList_item_selected"]
-[connection signal="item_selected" from="PlantMenu/ItemList" to="PlantMenu/ItemList" method="_on_ItemList_item_selected"]
+[connection signal="pressed" from="PlantMenu/Button" to="PlantMenu/VBoxContainer" method="_on_Button_pressed"]
+[connection signal="pressed" from="PlantMenu/VBoxContainer/Exit" to="PlantMenu/Button" method="_on_Exit_pressed"]
+[connection signal="pressed" from="PlantMenu/VBoxContainer/Exit" to="PlantMenu/VBoxContainer" method="_on_Exit_pressed"]

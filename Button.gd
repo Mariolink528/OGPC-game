@@ -25,5 +25,5 @@ func _on_Button_pressed():
 
 
 
-func _on_ItemList_item_activated(Exit):
-	menu = 1;
+func _on_Exit_pressed():
+	menu = 0;

@@ -1,4 +1,4 @@
-extends ItemList
+extends VBoxContainer
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -15,10 +15,7 @@ func _ready():
 
 func _on_Button_pressed():
 	show()
-	print("YES")
 
 
-
-func _on_ItemList_item_activated(index):
-	if Itemlist.get_item_text():
-		hide()
+func _on_Exit_pressed():
+	hide()
